@@ -42,6 +42,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+  //update user
   updateUser(req, res) {
     User.findOneAndUpdate(
       {
@@ -64,6 +65,7 @@ module.exports = {
       })
       .catch((err) => res.status(400).json(err));
   },
+  // delete user
   deleteUser(req, res) {
     User.findOneAndDelete({
       _id: params.id,
@@ -91,7 +93,6 @@ module.exports = {
           }
         )
           .then(() => {
-            //deletes user's thought associated with id
             Thought.deleteMany({
               username: dbUserData.username,
             })
